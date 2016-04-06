@@ -1,0 +1,50 @@
+{% import 'macros/form.html' as form %}
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _('Export data.gv.at') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active">{% link_for _('Export'), controller='ckanext.dgvat_por.controllers.dgvat_cockpit:DgvatCockpitController', action='export' %}</li>
+{% endblock %}
+
+{% block primary %}
+  <article class="module">
+    <div class="module-content">
+      {% block about %}
+          <h1 class="page-heading">Datens&auml;tze exportieren</h1>
+          {% if c.sent %}
+            Die exportierten Daten k&ouml;nnen Sie <a href="{{c.path|safe}}" target="_blank">hier</a> herunterladen!
+          {% else %}
+            <p>Hier k&ouml;nnen Sie alle Metadatens&auml;tze ihrer Organisation im Excel-Format exportieren.</p>
+            
+            <p>Die heruntergeladene Datei kann bearbeitet und danach wieder importiert werden. <br />Aus Performance-Gr&uuml;nden empfehlen wir, nicht ge&auml;nderte Datens&auml;tze aus dem Excel-File zu entfernen.</p>
+            
+            
+            
+            <p>Bitte w&auml;hlen Sie die gew&uuml;nschte Organisation aus:</p>
+            <form enctype="multipart/form-data" method="post">
+
+    <div class="control-group control-full">
+      <label for="field-organizations" class="control-label">Ver&ouml;ffentlichende Stelle</label>
+      <div class="controls">
+        <select id="field-organizations" name="owner_org" data-module="autocomplete">
+          {% for organization in c.orgs %}
+            <option value="{{ organization.id }}">{{ organization.title }}</option>
+          {% endfor %}
+        </select>
+      </div>     
+    </div>            
+            {% if c.userobj.sysadmin %}
+            <label for="all" style="font-weight: normal; font-size: 12px;"><input type="checkbox" id="all" name="all" value="1" style="top:0px;" /> Alle Datens&auml;tze aller Organisationen exportieren </label> <br /><br />
+            {% endif %}
+            <input type="hidden" id="sent" name="sent" value="1" />
+            <input type="submit" id="submit" name="submit" value="Export starten" />
+            </form>
+
+          {% endif %}
+      {% endblock %}
+    </div>
+  </article>
+{% endblock %}
+
+{% block secondary %}{% endblock %}
