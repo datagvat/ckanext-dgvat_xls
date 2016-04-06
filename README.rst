@@ -1,5 +1,5 @@
 Dgvat XLS-Export Extension
-================
+==========================
 
 The dgvat XLS-export extension allows group-admin to export datasets from their organizations 
 to export all datasets to a .xls worksheet. Sysadmins may choose to export datasets from any
@@ -18,14 +18,15 @@ able to add the following to your CKAN .ini file::
 
  ckan.plugins = dgvat_xls <other-plugins>
 
-Set up the needed values in your ini:
+Set up the needed values in your ini::
 
  dgvat_xls.template = NAME_AND_PATH_OF_YOUR_XLS_TEMPLATE_FILE  
- dgvat_xls.path = FULL_QUALIFIED_PATH - where the generated file should be stored (has to be reachable if you want to download the generated file)  
+ dgvat_xls.path = FULL_QUALIFIED_PATH - where the generated file should be stored 
+                  (has to be reachable if you want to download the generated file)  
  dgvat_xls.url = PUBLIC_DIRECTORY_FOR_DOWNLOAD - defaults to "/exportFiles/" used for the download link  
+ 
 
-
-Using the Extension
+Using the Extension 
 -------------------
 
 The plugin is now reachable at:
