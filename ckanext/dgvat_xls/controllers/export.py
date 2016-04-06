@@ -73,7 +73,7 @@ class DgvatExportController(base.BaseController):
                 packages = group_dict.get("packages")
                 filename = group_dict['name']
 
-            template = config.get('export_xls.template', '/products/ckan/exportFiles/export.xls')
+            template = config.get('export_xls.template')
             rb = open_workbook(template)
             wb = copy(rb)
 
@@ -133,14 +133,10 @@ class DgvatExportController(base.BaseController):
                         j = j + 1
                     i = i + 1
             
-            #tempfile = open('/products/ckan/exportFiles/'+ filename + '/export.xls', 'r')
-            filepath = config.get('export_xls.path', '../dgvat_xls/public/exportFiles')
+            filepath = config.get('export_xls.path')
             ensure_dir(filepath)
             filepath = filepath + filename + '.xls'
             wb.save(filepath)         
-            #savepath = '/products/ckan/pyenv/lib/python2.6/site-packages/ckanext/dgvat_por/public/exportFiles/' + filename + '.xls'
-            #perm_file = open(savepath, 'wb');
-            #shutil.copyfileobj(tempfile, perm_file)
             c.path = h.url_for_static(config.get('dgvat_xls.url', '/exportFiles/') + filename + '.xls')
         else:
             c.sent = 0
