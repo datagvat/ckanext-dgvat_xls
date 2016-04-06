@@ -19,9 +19,9 @@ able to add the following to your CKAN .ini file::
  ckan.plugins = dgvat_xls <other-plugins>
 
 Set up the needed values in your ini:
- dgvat_xls.template = NAME_AND_PATH_OF_YOUR_XLS_TEMPLATE_FILE
- dgvat_xls.path = FULL_QUALIFIED_PATH - where the generated file should be stored (has to be reachable if you want to download the generated file)
- dgvat_xls.url = PUBLIC_DIRECTORY_FOR_DOWNLOAD - defaults to "/exportFiles/" used for the download link
+ dgvat_xls.template = NAME_AND_PATH_OF_YOUR_XLS_TEMPLATE_FILE  
+ dgvat_xls.path = FULL_QUALIFIED_PATH - where the generated file should be stored (has to be reachable if you want to download the generated file)  
+ dgvat_xls.url = PUBLIC_DIRECTORY_FOR_DOWNLOAD - defaults to "/exportFiles/" used for the download link  
 
 
 Using the Extension
